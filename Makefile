@@ -6,7 +6,7 @@
 #    By: tpotier <tpotier@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 16:47:18 by tpotier           #+#    #+#              #
-#    Updated: 2019/04/15 17:27:07 by tpotier          ###   ########.fr        #
+#    Updated: 2019/04/15 17:30:42 by tpotier          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ clean:
 	rm -f $(OBJS) $(DEPS)
 
 fclean: clean
-	make -C $(LIBFTDIR)
+	make -C $(LIBFTDIR) $@
 	rm -f $(NAME)
 
 re: fclean all
