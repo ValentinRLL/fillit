@@ -6,7 +6,7 @@
 #    By: tpotier <tpotier@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 16:47:18 by tpotier           #+#    #+#              #
-#    Updated: 2019/04/15 17:24:37 by tpotier          ###   ########.fr        #
+#    Updated: 2019/04/15 17:27:07 by tpotier          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = fillit
 SDIR = srcs/
 IDIR = includes/
 LIBFTDIR = libft/
-LIBFT = $(LIBFTDIR)libft.a
+LIBFT = libft.a
 LIBFTINC = $(LIBFTDIR)incs/
 LIBFTFLAGS = -L$(LIBFTDIR) -lft
 CFLAGS = -Wall -Wextra -Werror -I$(IDIR) -I$(LIBFTINC) -MMD -MP
@@ -30,7 +30,7 @@ DEPS = $(SRCS:.c=.d)
 all: $(NAME)
 
 $(LIBFT):
-	make -C libft/
+	make -C $(LIBFTDIR) $@
 
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) -o $@ $(OBJS) $(CFLAGS) $(LIBFTFLAGS)
@@ -39,9 +39,11 @@ $(NAME): $(OBJS) $(LIBFT)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
+	make -C $(LIBFTDIR) $@
 	rm -f $(OBJS) $(DEPS)
 
 fclean: clean
+	make -C $(LIBFTDIR)
 	rm -f $(NAME)
 
 re: fclean all
