@@ -6,7 +6,7 @@
 #    By: tpotier <tpotier@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 16:47:18 by tpotier           #+#    #+#              #
-#    Updated: 2019/04/15 17:05:16 by tpotier          ###   ########.fr        #
+#    Updated: 2019/04/15 17:24:37 by tpotier          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBFTDIR = libft/
 LIBFT = $(LIBFTDIR)libft.a
 LIBFTINC = $(LIBFTDIR)incs/
 LIBFTFLAGS = -L$(LIBFTDIR) -lft
-CFLAGS = -Wall -Wextra -Werror -I$(IDIR) -I$(LIBFTINC) -MMD -MP $(LIBFTFLAGS)
+CFLAGS = -Wall -Wextra -Werror -I$(IDIR) -I$(LIBFTINC) -MMD -MP
 
 SRCS = $(addprefix $(SDIR), $(addsuffix .c, $(FILES)))
 INCS = $(addprefix $(IDIR), $(IFILES))
