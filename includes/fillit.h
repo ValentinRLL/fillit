@@ -6,7 +6,7 @@
 /*   By: tpotier <tpotier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:47:41 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/16 15:37:42 by valecart         ###   ########.fr       */
+/*   Updated: 2019/04/16 16:29:04 by valecart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,17 @@
 # include <sys/uio.h>
 # include <fcntl.h>
 # include <unistd.h>
+# define ERROR (-1)
 
-int		fillit_input(char *filename);
+typedef struct	s_piece
+{
+	char		**content;
+	int			height;
+	int			width;
+	int			x;
+	int			y;
+}				t_piece;
+
+int				fillit_input(char *filename);
 
 #endif
