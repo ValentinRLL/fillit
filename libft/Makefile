@@ -6,7 +6,7 @@
 #    By: tpotier <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/01 16:36:41 by tpotier           #+#    #+#              #
-#    Updated: 2019/04/12 18:06:45 by tpotier          ###   ########.fr        #
+#    Updated: 2019/04/16 12:38:58 by tpotier          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ DEPS = $(SRCS:.c=.d)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $@ $(OBJS)
+	ar rsc $@ $(OBJS)
 	ranlib $@
 
 %.o: %.c
