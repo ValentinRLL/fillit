@@ -6,13 +6,13 @@
 /*   By: tpotier <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:09:06 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/16 16:35:41 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/16 17:58:37 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	place(t_piece *pieces)
+void	place(t_piece **pieces)
 {
 	int		i;
 	int		j;

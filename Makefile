@@ -6,13 +6,15 @@
 #    By: tpotier <tpotier@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 16:47:18 by tpotier           #+#    #+#              #
-#    Updated: 2019/04/16 15:37:14 by valecart         ###   ########.fr        #
+#    Updated: 2019/04/16 17:57:42 by tpotier          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 FILES = fillit \
-		parsing
+		parsing \
+		brain \
+		io
 IFILES = fillit.h
 NAME = fillit
 SDIR = srcs/

@@ -6,11 +6,21 @@
 /*   By: tpotier <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:35:56 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/16 17:55:51 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/16 17:59:13 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void	free_buff(char **buff, int tot_height)
+{
+	int		n;
+
+	n = 0;
+	while (n < tot_height)
+		free(buff[n++]);
+	free(buff);
+}
 
 char	**init_buff(int tot_width, int tot_height)
 {
@@ -35,17 +45,7 @@ char	**init_buff(int tot_width, int tot_height)
 	return (buff);
 }
 
-void	free_buff(char **buff, int tot_height)
-{
-	int		n;
-
-	n = 0;
-	while (n < tot_height)
-		free(buff[n++]);
-	free(buff);
-}
-
-void	display_grid(t_pieces **pcs, int tot_width, int tot_height)
+void	display_grid(t_piece **pcs, int tot_width, int tot_height)
 {
 	char	**buff;
 	int		n;
