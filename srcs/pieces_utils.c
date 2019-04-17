@@ -6,7 +6,7 @@
 /*   By: valecart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 15:18:12 by valecart          #+#    #+#             */
-/*   Updated: 2019/04/17 16:43:27 by valecart         ###   ########.fr       */
+/*   Updated: 2019/04/17 18:00:18 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,23 @@ void	set_piece_size(t_piece *piece)
 	}
 	piece->width++;
 	piece->height++;
+}
+
+void	get_current_size(t_piece **pieces, int *width, int *height)
+{
+	int	i;
+	int	new_h;
+	int	new_w;
+
+	i = 0;
+	*width = 0;
+	*height = 0;
+	while (pieces[i])
+	{
+		new_w = pieces[i]->x + pieces[i]->width;
+		new_h = pieces[i]->y + pieces[i]->height;
+		*width = new_w > *width ? new_w : *width;
+		*height = new_h > *height ? new_h : *height;
+		i++;
+	}
 }

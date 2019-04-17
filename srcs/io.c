@@ -6,7 +6,7 @@
 /*   By: tpotier <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:35:56 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/17 14:40:04 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/17 17:58:52 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,33 +45,48 @@ char	**init_buff(int tot_width, int tot_height)
 	return (buff);
 }
 
-void	display_grid(t_piece **pcs, int tot_width, int tot_height)
+void	fill_tab(t_piece *piece, char **buff, int n)
+{
+	int	i;
+	int	j;
+
+	j = -1;
+	while (++j < 4)
+	{
+		i = -1;
+		while (++i < 4)
+			if (piece->content[j][i] == '#')
+				buff[j + piece->y][i + piece->x] = 'A' + n;
+	}
+}
+
+void	print_tab(char **buff, int tot_width, int tot_height)
+{
+	int		i;
+	int		j;
+
+	j = -1;
+	while (++j < tot_height)
+	{
+		i = -1;
+		while (++i < tot_width)
+			ft_putchar(buff[j][i]);
+		ft_putchar('\n');
+	}
+}
+
+void	display_grid(t_piece **pcs)
 {
 	char	**buff;
-	int		n;
-	int		o;
+	int		tot_width;
+	int		tot_height;
 	int		i;
 
+	get_current_size(pcs, &tot_width, &tot_height);
 	buff = init_buff(tot_width, tot_height);
 	i = -1;
 	while (pcs[++i])
-	{
-		n = -1;
-		while (++n < 4)
-		{
-			o = -1;
-			while (++o < 4)
-				if (pcs[i]->content[n][o] == '#')
-					buff[n + pcs[i]->y][o + pcs[i]->x] = 'A' + i;
-		}
-	}
-	n = -1;
-	while (++n < tot_height)
-	{
-		o = -1;
-		while (++o < tot_width)
-			ft_putchar(buff[n][o]);
-		ft_putchar('\n');
-	}
+		fill_tab(pcs[i], buff, i);
+	print_tab(buff, tot_width, tot_height);
 	free_buff(buff, tot_height);
 }
