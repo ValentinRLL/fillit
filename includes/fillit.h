@@ -6,7 +6,7 @@
 /*   By: tpotier <tpotier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:47:41 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/16 17:50:09 by valecart         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:29:11 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <sys/uio.h>
 # include <fcntl.h>
 # include <unistd.h>
+
 # define ERROR (-1)
 # define SUCCESS (1)
 # define SUCCESS_END (42)
@@ -31,6 +32,7 @@ typedef struct	s_piece
 	int			y;
 }				t_piece;
 
-int				fillit_input(char *filename);
+int				fillit_input(char *filename, t_piece ***pieces);
+void			place(t_piece **pieces);
 
 #endif

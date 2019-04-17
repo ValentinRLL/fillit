@@ -6,7 +6,7 @@
 /*   By: valecart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 15:35:33 by valecart          #+#    #+#             */
-/*   Updated: 2019/04/16 17:53:29 by valecart         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:29:49 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ t_piece	*piece_generator(void)
 	int			j;
 
 	j = 0;
-	if (!(piece = (t_piece*)malloc(sizeof(piece))))
+	if (!(piece = (t_piece *)malloc(sizeof(*piece))))
 		return (NULL);
-	if (!(piece->content = (char**)malloc(sizeof(char*) * 4)))
+	if (!(piece->content = (char **)malloc(sizeof(char *) * 4)))
 	{
 		free(piece);
 		return (NULL);
 	}
 	while (j < 4)
 	{
-		if (!(piece->content[j] = (char*)malloc(sizeof(char) * 5)))
+		if (!(piece->content[j] = (char *)malloc(sizeof(char) * 5)))
 		{
 			while (j >= 0)
 				free(piece->content[j--]);
@@ -36,6 +36,10 @@ t_piece	*piece_generator(void)
 		}
 		j++;
 	}
+	piece->width = 1;
+	piece->height = 2;
+	piece->x = 3;
+	piece->y = 4;
 	return (piece);
 }
 
@@ -69,7 +73,6 @@ int		fill_piece(int fd, t_piece *piece)
 		if (rd != 5 || piece->content[j][4] != '\n')
 			return (ERROR);
 		piece->content[j][4] = '\0';
-		ft_putendl(piece->content[j]);
 		j++;
 	}
 	rd = read(fd, &tmp, 1);
@@ -80,11 +83,10 @@ int		fill_piece(int fd, t_piece *piece)
 	return (SUCCESS);
 }
 
-int		fillit_input(char *filename)
+int		fillit_input(char *filename, t_piece ***pieces)
 {
 	size_t	rd;
 	int		fd;
-	t_piece		**pieces;
 	int		i;
 	int		status;
 
@@ -93,24 +95,24 @@ int		fillit_input(char *filename)
 	rd = 1;
 	if ((fd = open(filename, O_RDONLY)) < 0)
 		return (ERROR);
-	if (!(pieces = (t_piece**)malloc(sizeof(t_piece*) * 26)))
+	if (!(*pieces = (t_piece**)malloc(sizeof(t_piece*) * (26 + 1))))
 	{
 		close(fd);
 		return (ERROR);
 	}
 	while (i < 26) // 26 is the max value but we will stop at the end of the file
 	{
-		if (!(pieces[i] = piece_generator()) || ((status = fill_piece(fd, pieces[i])) == ERROR))
+		(*pieces)[i + 1] = NULL;;
+		if (!((*pieces)[i] = piece_generator()) || ((status = fill_piece(fd, (*pieces)[i])) == ERROR))
 		{
 			while (i >= 0)
 			{
-				freepiece(&pieces[i]);
+				freepiece(&(*pieces)[i]);
 				i--;
 			}
 			close(fd);
 			return (ERROR);
 		}
-		ft_putendl("Piece read");
 		if (status == SUCCESS_END)
 			break ;
 		i++;
