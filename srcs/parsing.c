@@ -6,7 +6,7 @@
 /*   By: valecart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 15:35:33 by valecart          #+#    #+#             */
-/*   Updated: 2019/04/17 15:37:47 by valecart         ###   ########.fr       */
+/*   Updated: 2019/04/17 16:42:48 by valecart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ t_piece	*piece_generator(void)
 		}
 		j++;
 	}
-	piece->width = 1;
-	piece->height = 2;
-	piece->x = 3;
-	piece->y = 4;
+	piece->x = 0;
+	piece->y = 0;
 	return (piece);
 }
 
@@ -80,7 +78,8 @@ int		patch_piece(t_piece *piece)
 				count++;
 			}
 	}
-	piece = move_to_top(piece, first_x, first_y);
+	move_to_top(piece, first_x, first_y);
+	set_piece_size(piece);
 	/*ft_putnbr(first_x);*/
 	/*ft_putstr(", ");*/
 	/*ft_putnbr(first_y);*/

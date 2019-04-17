@@ -6,13 +6,13 @@
 /*   By: valecart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 15:18:12 by valecart          #+#    #+#             */
-/*   Updated: 2019/04/17 15:41:51 by valecart         ###   ########.fr       */
+/*   Updated: 2019/04/17 16:43:27 by valecart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_piece		*move_to_top(t_piece *piece, int first_x, int first_y)
+void		move_to_top(t_piece *piece, int first_x, int first_y)
 {
 	int		x;
 	int		y;
@@ -21,7 +21,6 @@ t_piece		*move_to_top(t_piece *piece, int first_x, int first_y)
 	x = 0;
 	y = 0;
 	prev_fx = first_x;
-	ft_putendl("moving...");
 	while (first_y < 4)
 	{
 		first_x = prev_fx;
@@ -33,10 +32,29 @@ t_piece		*move_to_top(t_piece *piece, int first_x, int first_y)
 			first_x++;
 			x++;
 		}
-		ft_putendl(piece->content[y]);
 		first_y++;
 		y++;
 	}
-	ft_putendl("moved.\n");
-	return (piece);
+}
+
+void	set_piece_size(t_piece *piece)
+{
+	int		i;
+	int		j;
+
+	piece->width = 0;
+	piece->height = 0;
+	i = 4;
+	while (--i >= 0)
+	{
+		j = 4;
+		while (--j >= 0)
+			if (piece->content[j][i] == '#')
+			{
+				piece->height = j > piece->height ? j : piece->height;
+				piece->width = i > piece->width ? i : piece->width;
+			}
+	}
+	piece->width++;
+	piece->height++;
 }
