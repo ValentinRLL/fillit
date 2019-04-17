@@ -6,7 +6,7 @@
 /*   By: tpotier <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:09:06 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/17 13:26:32 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/17 18:16:41 by valecart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ void	place(t_piece **pieces)
 	int		j;
 
 	i = 0;
+	srand(time(NULL));
 	while (pieces[i])
 	{
+		pieces[i]->x = rand() % 10;
+		pieces[i]->y = rand() % 10; // backtracking here
 		j = 0;
 		ft_putstr("Piece n ");
 		ft_putnbr(i);
