@@ -6,7 +6,7 @@
 /*   By: valecart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 15:35:33 by valecart          #+#    #+#             */
-/*   Updated: 2019/04/17 16:42:48 by valecart         ###   ########.fr       */
+/*   Updated: 2019/04/17 16:56:06 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,15 @@ int		patch_piece(t_piece *piece)
 				first_y = j < first_y ? j : first_y;
 				first_x = i < first_x ? i : first_x;
 				count++;
+				if ((j - 1 < 0 || piece->content[j - 1][i])
+						&& (j + 1 > 3 || piece->content[j + 1][i])
+						&& (i - 1 < 0 || piece->content[j][i - 1])
+						&& (i + 1 > 3 || piece->content[j][i + 1]))
+					return (ERROR);
 			}
 	}
 	move_to_top(piece, first_x, first_y);
 	set_piece_size(piece);
-	/*ft_putnbr(first_x);*/
-	/*ft_putstr(", ");*/
-	/*ft_putnbr(first_y);*/
-	/*ft_putstr("\n");*/
 	return (count == 4 ? SUCCESS : ERROR);
 }
 
