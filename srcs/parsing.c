@@ -6,7 +6,7 @@
 /*   By: valecart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 15:35:33 by valecart          #+#    #+#             */
-/*   Updated: 2019/04/17 14:29:49 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/17 15:12:43 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,42 @@ void	freepiece(t_piece **piece)
 	*piece = NULL;
 }
 
+int		patch_piece(t_piece *piece)
+{
+	int		first_x;
+	int		first_y;
+	int		i;
+	int		j;
+	int		count;
+
+	first_x = 3;
+	first_y = 3;
+	i = -1;
+	count = 0;
+	while (++i < 4)
+	{
+		j = -1;
+		while (++j < 4)
+			if (piece->content[j][i] == '#')
+			{
+				first_y = j < first_y ? j : first_y;
+				first_x = i < first_x ? i : first_x;
+				count++;
+			}
+	}
+	ft_putnbr(first_x);
+	ft_putstr(", ");
+	ft_putnbr(first_y);
+	ft_putstr("\n");
+	return (count == 4 ? SUCCESS : ERROR);
+}
+
 int		fill_piece(int fd, t_piece *piece)
 {
 	int		rd;
-	int		i;
 	int		j;
 	char	tmp;
 
-	i = 0;
 	j = 0;
 	while (j < 4)
 	{
@@ -76,6 +104,8 @@ int		fill_piece(int fd, t_piece *piece)
 		j++;
 	}
 	rd = read(fd, &tmp, 1);
+	if (patch_piece(piece) == ERROR)
+		return (ERROR);
 	if (rd == 0)
 		return (SUCCESS_END);
 	if (rd < 0 || tmp != '\n')

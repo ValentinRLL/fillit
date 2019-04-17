@@ -6,7 +6,7 @@
 /*   By: tpotier <tpotier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:47:41 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/17 14:29:11 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/17 14:56:02 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ typedef struct	s_piece
 
 int				fillit_input(char *filename, t_piece ***pieces);
 void			place(t_piece **pieces);
+void			display_grid(t_piece **pcs, int tot_width, int tot_height);
 
 #endif

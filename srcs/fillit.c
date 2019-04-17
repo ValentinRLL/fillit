@@ -6,7 +6,7 @@
 /*   By: tpotier <tpotier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:51:39 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/17 13:28:49 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/17 14:36:15 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int		main(int ac, char **av)
 	if (fillit_input(av[1], &pieces) != SUCCESS)
 		ft_putendl("Error");
 	place(pieces);
+	display_grid(pieces, 20, 20);
 	return (0);
 }
