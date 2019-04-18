@@ -6,7 +6,7 @@
 #    By: tpotier <tpotier@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/15 16:47:18 by tpotier           #+#    #+#              #
-#    Updated: 2019/04/17 15:29:22 by valecart         ###   ########.fr        #
+#    Updated: 2019/04/18 16:17:34 by tpotier          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ FILES = fillit \
 		parsing \
 		brain \
 		io \
-		pieces_utils
+		pieces_utils \
+		board_utils
 IFILES = fillit.h
 NAME = fillit
 SDIR = srcs/

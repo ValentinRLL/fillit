@@ -6,12 +6,11 @@
 /*   By: tpotier <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:35:56 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/18 15:24:19 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/18 16:12:41 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
 
 void	print_board(char **buff, int size)
 {
