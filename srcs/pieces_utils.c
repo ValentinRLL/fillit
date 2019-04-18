@@ -6,13 +6,13 @@
 /*   By: valecart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 15:18:12 by valecart          #+#    #+#             */
-/*   Updated: 2019/04/18 16:05:26 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/18 16:22:31 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void		move_to_top(t_piece *piece, int first_x, int first_y)
+void	move_to_top(t_piece *piece, int first_x, int first_y)
 {
 	int		x;
 	int		y;
