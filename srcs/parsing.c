@@ -6,7 +6,7 @@
 /*   By: valecart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 15:35:33 by valecart          #+#    #+#             */
-/*   Updated: 2019/04/18 16:42:38 by valecart         ###   ########.fr       */
+/*   Updated: 2019/04/18 18:19:25 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int		patch_piece2(t_piece *piece, int *first_x, int *first_y, int *count)
 {
 	int		i;
 	int		j;
+	int		total_conn;
 
+	total_conn = 0;
 	i = -1;
 	while (++i < 4)
 	{
@@ -27,14 +29,10 @@ int		patch_piece2(t_piece *piece, int *first_x, int *first_y, int *count)
 				*first_y = j < *first_y ? j : *first_y;
 				*first_x = i < *first_x ? i : *first_x;
 				(*count)++;
-				if (!(j - 1 < 0 || piece->content[j - 1][i]
-						|| j + 1 > 3 || piece->content[j + 1][i]
-						|| i - 1 < 0 || piece->content[j][i - 1]
-						|| i + 1 > 3 || piece->content[j][i + 1]))
-					return (ERROR);
+				total_conn += is_in_one_piece(piece, i, j);
 			}
 	}
-	return (SUCCESS);
+	return (total_conn >= 6 ? SUCCESS : ERROR);
 }
 
 int		patch_piece(t_piece *piece)
@@ -46,7 +44,8 @@ int		patch_piece(t_piece *piece)
 	first_x = 3;
 	first_y = 3;
 	count = 0;
-	patch_piece2(piece, &first_x, &first_y, &count);
+	if (patch_piece2(piece, &first_x, &first_y, &count) == ERROR)
+		return (ERROR);
 	move_to_top(piece, first_x, first_y);
 	set_piece_size(piece);
 	return (count == 4 ? SUCCESS : ERROR);

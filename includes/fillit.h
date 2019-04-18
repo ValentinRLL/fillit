@@ -6,7 +6,7 @@
 /*   By: tpotier <tpotier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:47:41 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/18 16:45:00 by valecart         ###   ########.fr       */
+/*   Updated: 2019/04/18 17:59:21 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ void			free_board(char **buff, int tot_height);
 char			**init_board(int size);
 t_piece			*piece_generator(void);
 void			freepiece(t_piece **piece);
+int				is_in_one_piece(t_piece *piece, int i, int j);
 
 #endif
