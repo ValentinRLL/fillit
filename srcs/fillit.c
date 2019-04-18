@@ -6,7 +6,7 @@
 /*   By: tpotier <tpotier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:51:39 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/17 18:00:54 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/18 15:31:58 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,5 @@ int		main(int ac, char **av)
 		return (-1);
 	}
 	place(pieces);
-	ft_putendl("Final grid:");
-	display_grid(pieces);
 	return (0);
 }
