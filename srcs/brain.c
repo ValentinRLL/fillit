@@ -6,7 +6,7 @@
 /*   By: tpotier <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:09:06 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/18 16:18:49 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/18 16:25:43 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,25 @@ int		can_place(t_piece *piece, char **board)
 		while (++i < 4)
 			if (piece->content[j][i] == '#'
 					&& board[j + piece->y][i + piece->x] != '.')
-			   return (ERROR);
+				return (ERROR);
 	}
 	return (SUCCESS);
 }
 
-
-int		fill_board(t_piece **pieces, int n_piece, char **board, int board_size)
+int		fill_board(t_piece **pieces, int n_piece, char **board, int board_sz)
 {
 	if (!pieces[n_piece])
 		return (SUCCESS);
 	pieces[n_piece]->y = 0;
-	while (pieces[n_piece]->y + pieces[n_piece]->height <= board_size)
+	while (pieces[n_piece]->y + pieces[n_piece]->height <= board_sz)
 	{
 		pieces[n_piece]->x = 0;
-		while (pieces[n_piece]->x + pieces[n_piece]->width <= board_size)
+		while (pieces[n_piece]->x + pieces[n_piece]->width <= board_sz)
 		{
 			if (can_place(pieces[n_piece], board) == SUCCESS)
 			{
 				add_piece_to_board(pieces[n_piece], board, n_piece);
-				if (fill_board(pieces, n_piece + 1, board, board_size) == SUCCESS)
+				if (fill_board(pieces, n_piece + 1, board, board_sz) == SUCCESS)
 					return (SUCCESS);
 				remove_piece_from_board(pieces[n_piece], board);
 			}

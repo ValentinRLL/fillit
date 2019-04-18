@@ -6,7 +6,7 @@
 /*   By: tpotier <tpotier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:47:41 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/18 16:17:03 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/18 16:26:03 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@
 # include <sys/uio.h>
 # include <fcntl.h>
 # include <unistd.h>
-
-//remove moi stp
-# include <time.h>
-# include <stdlib.h>
 
 # define ERROR			(-1)
 # define SUCCESS		(1)
