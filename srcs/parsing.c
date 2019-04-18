@@ -6,7 +6,7 @@
 /*   By: valecart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 15:35:33 by valecart          #+#    #+#             */
-/*   Updated: 2019/04/18 18:19:25 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/18 19:28:21 by valecart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int		patch_piece2(t_piece *piece, int *first_x, int *first_y, int *count)
 				(*count)++;
 				total_conn += is_in_one_piece(piece, i, j);
 			}
+			else if (piece->content[j][i] != '.')
+				return (ERROR);
 	}
 	return (total_conn >= 6 ? SUCCESS : ERROR);
 }
@@ -84,8 +86,10 @@ int		fillit_input2(int fd, t_piece ***pieces)
 
 	i = 0;
 	status = 0;
-	while (i < 26)
+	while (1)
 	{
+		if (i >= 26)
+			return (ERROR);
 		(*pieces)[i + 1] = NULL;
 		(*pieces)[i] = piece_generator();
 		if (!(*pieces)[i] || ((status = fill_piece(fd, (*pieces)[i])) == ERROR))
