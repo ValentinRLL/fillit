@@ -6,7 +6,7 @@
 /*   By: valecart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 15:18:12 by valecart          #+#    #+#             */
-/*   Updated: 2019/04/17 18:00:18 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/18 16:05:26 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void		move_to_top(t_piece *piece, int first_x, int first_y)
 	int		y;
 	int		prev_fx;
 
+	if (!first_x && !first_y)
+		return ;
 	x = 0;
 	y = 0;
 	prev_fx = first_x;

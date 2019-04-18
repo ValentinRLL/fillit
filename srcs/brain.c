@@ -6,7 +6,7 @@
 /*   By: tpotier <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 16:09:06 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/18 15:35:34 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/18 15:54:19 by tpotier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ void	add_piece_to_board(t_piece *piece, char **buff, int n)
 			if (piece->content[j][i] == '#')
 				buff[j + piece->y][i + piece->x] = 'A' + n;
 	}
+	ft_putstr("Add ");
+	ft_putchar('A' + n);
+	ft_putstr(" at (");
+	ft_putnbr(piece->x);
+	ft_putstr(", ");
+	ft_putnbr(piece->y);
+	ft_putstr(")\n");
 }
 
 void	free_board(char **buff, int tot_height)
@@ -105,8 +112,16 @@ int		fill_board(t_piece **pieces, int n_piece, char **board, int board_size)
 			if (can_place(pieces[n_piece], board) == SUCCESS)
 			{
 				add_piece_to_board(pieces[n_piece], board, n_piece);
+				print_board(board, board_size);
 				if (fill_board(pieces, n_piece + 1, board, board_size) == SUCCESS)
 					return (SUCCESS);
+				ft_putstr("Removed ");
+				ft_putchar('A' + n_piece);
+				ft_putstr(" at (");
+				ft_putnbr(pieces[n_piece]->x);
+				ft_putstr(", ");
+				ft_putnbr(pieces[n_piece]->y);
+				ft_putstr(")\n");
 				remove_piece_from_board(pieces[n_piece], board);
 			}
 			pieces[n_piece]->x++;
