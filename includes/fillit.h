@@ -6,7 +6,7 @@
 /*   By: tpotier <tpotier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:47:41 by tpotier           #+#    #+#             */
-/*   Updated: 2019/04/18 16:26:03 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/18 16:45:00 by valecart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,7 @@ void			remove_piece_from_board(t_piece *piece, char **board);
 void			add_piece_to_board(t_piece *piece, char **buff, int n);
 void			free_board(char **buff, int tot_height);
 char			**init_board(int size);
+t_piece			*piece_generator(void);
+void			freepiece(t_piece **piece);
 
 #endif

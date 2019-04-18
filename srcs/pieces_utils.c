@@ -6,11 +6,54 @@
 /*   By: valecart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 15:18:12 by valecart          #+#    #+#             */
-/*   Updated: 2019/04/18 16:22:31 by tpotier          ###   ########.fr       */
+/*   Updated: 2019/04/18 16:42:54 by valecart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+t_piece	*piece_generator(void)
+{
+	t_piece		*piece;
+	int			j;
+
+	j = 0;
+	if (!(piece = (t_piece *)malloc(sizeof(*piece))))
+		return (NULL);
+	if (!(piece->content = (char **)malloc(sizeof(char *) * 4)))
+	{
+		free(piece);
+		return (NULL);
+	}
+	while (j < 4)
+	{
+		if (!(piece->content[j] = (char *)malloc(sizeof(char) * 5)))
+		{
+			while (j >= 0)
+				free(piece->content[j--]);
+			free(piece);
+			return (NULL);
+		}
+		j++;
+	}
+	piece->x = 0;
+	piece->y = 0;
+	return (piece);
+}
+
+void	freepiece(t_piece **piece)
+{
+	int		j;
+
+	j = 0;
+	if (!*piece)
+		return ;
+	while (j < 4)
+		free((*piece)->content[j++]);
+	free((*piece)->content);
+	free(*piece);
+	*piece = NULL;
+}
 
 void	move_to_top(t_piece *piece, int first_x, int first_y)
 {
